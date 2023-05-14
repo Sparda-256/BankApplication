@@ -1,0 +1,47 @@
+﻿<Window x:Class="BankApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:BankApplication"
+        Title="Bank Application" Height="350" Width="525">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Выберите тип счета:" Margin="5"/>
+        <ComboBox Grid.Row="0" Grid.Column="1" x:Name="accountTypeComboBox" Margin="5">
+            <ComboBoxItem Content="До востребования" Tag="Ordinary"/>
+            <ComboBoxItem Content="Депозит" Tag="Deposit"/>
+        </ComboBox>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Укажите сумму для создания счета:" Margin="5"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="sumTextBox" Margin="5"/>
+        <Button Grid.Row="1" Grid.Column="2" Content="Открыть счет" Margin="5"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Укажите Id счета:" Margin="5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="idTextBox" Margin="5"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Укажите сумму для операции:" Margin="5"/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="operationSumTextBox" Margin="5"/>
+        <Button Grid.Row="3" Grid.Column="2" Content="Вывести средства" Margin="5"/>
+        <Button Grid.Row="3" Grid.Column="3" Content="Добавить на счет" Margin="5"/>
+        <Button Grid.Row="4" Grid.Column="0" Content="Закрыть счет" Margin="5"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Пропустить день" Margin="5"/>
+        <Button Grid.Row="4" Grid.Column="2" Content="Выйти из программы" Margin="5"/>
+        <ListView Grid.Row="5" Grid.ColumnSpan="3" Margin="5" ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedAccount}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="100"/>
+                    <GridViewColumn Header="Тип счета" DisplayMemberBinding="{Binding Type}" Width="100"/>
+                    <GridViewColumn Header="Баланс" DisplayMemberBinding="{Binding Balance}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
